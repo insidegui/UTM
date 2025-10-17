@@ -112,6 +112,28 @@ bool jb_has_cs_disabled(void) {
 extern NSDictionary *app_entitlements(void);
 
 #if !WITH_SRD
+static NSDictionary *parse_entitlements(const void *entitlements, size_t length) {
+    char *copy = malloc(length);
+    memcpy(copy, entitlements, length);
+
+    // strip out psychic paper entitlement hiding
+    if (@available(iOS 13.5, *)) {
+    } else {
+        static const char *needle = "<!---><!-->";
+        char *found = strnstr(copy, needle, length);
+        if (found) {
+            memset(found, ' ', strlen(needle));
+        }
+    }
+    NSData *data = [NSData dataWithBytes:copy length:length];
+    free(copy);
+
+    return [NSPropertyListSerialization propertyListWithData:data
+                                                     options:NSPropertyListImmutable
+                                                      format:nil
+                                                       error:nil];
+}
+
 NSDictionary *app_entitlements(void) {
     // Inspired by codesign.c in Darwin sources for Security.framework
 
@@ -178,28 +200,6 @@ NSDictionary *app_entitlements(void) {
         }
     }
     return nil;
-}
-
-static NSDictionary *parse_entitlements(const void *entitlements, size_t length) {
-    char *copy = malloc(length);
-    memcpy(copy, entitlements, length);
-
-    // strip out psychic paper entitlement hiding
-    if (@available(iOS 13.5, *)) {
-    } else {
-        static const char *needle = "<!---><!-->";
-        char *found = strnstr(copy, needle, length);
-        if (found) {
-            memset(found, ' ', strlen(needle));
-        }
-    }
-    NSData *data = [NSData dataWithBytes:copy length:length];
-    free(copy);
-
-    return [NSPropertyListSerialization propertyListWithData:data
-                                                     options:NSPropertyListImmutable
-                                                      format:nil
-                                                       error:nil];
 }
 #endif
 

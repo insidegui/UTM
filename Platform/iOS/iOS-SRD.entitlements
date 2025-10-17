@@ -4,6 +4,8 @@
 <dict>
 	<key>application-identifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>com.apple.developer.team-identifier</key>
+	<string>Apple</string>
 	<key>dynamic-codesigning</key>
 	<true/>
 	<key>com.apple.security.cs.jit-write-allowlist</key>
@@ -25,8 +27,6 @@
 	<key>com.apple.developer.kernel.extended-virtual-addressing</key>
 	<true/>
 	<key>com.apple.private.hypervisor</key>
-	<true/>
-	<key>com.apple.private.security.no-sandbox</key>
 	<true/>
 	<key>com.apple.private.IOSurface.protected-access</key>
 	<true/>

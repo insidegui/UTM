@@ -672,8 +672,11 @@ enum AlertItem: Identifiable {
             }
             return
         }
-        // check if VM is valid
-        guard let _ = try? VMData(url: url) else {
+        do {
+            // check if VM is valid
+            _ = try VMData(url: url)
+        } catch {
+            logger.error("data is invalid: \(error)")
             throw UTMDataError.importFailed
         }
         let vm: VMData?

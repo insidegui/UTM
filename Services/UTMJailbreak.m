@@ -108,31 +108,13 @@ bool jb_has_cs_disabled(void) {
 #endif
 }
 
-static NSDictionary *parse_entitlements(const void *entitlements, size_t length) {
-    char *copy = malloc(length);
-    memcpy(copy, entitlements, length);
-    
-    // strip out psychic paper entitlement hiding
-    if (@available(iOS 13.5, *)) {
-    } else {
-        static const char *needle = "<!---><!-->";
-        char *found = strnstr(copy, needle, length);
-        if (found) {
-            memset(found, ' ', strlen(needle));
-        }
-    }
-    NSData *data = [NSData dataWithBytes:copy length:length];
-    free(copy);
-    
-    return [NSPropertyListSerialization propertyListWithData:data
-                                                     options:NSPropertyListImmutable
-                                                      format:nil
-                                                       error:nil];
-}
+// For SRD builds, this is implemented in UTMSRD
+extern NSDictionary *app_entitlements(void);
 
-static NSDictionary *app_entitlements(void) {
+#if !WITH_SRD
+NSDictionary *app_entitlements(void) {
     // Inspired by codesign.c in Darwin sources for Security.framework
-    
+
     // Find our mach-o header
     Dl_info dl_info;
     if (dladdr(app_entitlements, &dl_info) == 0)
@@ -143,7 +125,7 @@ static NSDictionary *app_entitlements(void) {
     struct mach_header_64 *header = dl_info.dli_fbase;
     if (header->magic != MH_MAGIC_64)
         return nil;
-    
+
     // Simulator executables have fake entitlements in the code signature. The real entitlements can be found in an __entitlements section.
     size_t entitlements_size;
     uint8_t *entitlements_data = getsectiondata(header, "__TEXT", "__entitlements", &entitlements_size);
@@ -156,7 +138,7 @@ static NSDictionary *app_entitlements(void) {
                                                           format:nil
                                                            error:nil];
     }
-    
+
     // Find the LC_CODE_SIGNATURE
     struct load_command *lc = (void *) (base + sizeof(*header));
     struct linkedit_data_command *cs_lc = NULL;
@@ -187,7 +169,7 @@ static NSDictionary *app_entitlements(void) {
     const struct cs_superblob *cs = csData.bytes;
     if (ntohl(cs->magic) != 0xfade0cc0)
         return nil;
-    
+
     // Find the entitlements in the code signature
     for (uint32_t i = 0; i < ntohl(cs->count); i++) {
         struct cs_entitlements *ents = (void *) ((char *) cs + ntohl(cs->index[i].offset));
@@ -197,6 +179,29 @@ static NSDictionary *app_entitlements(void) {
     }
     return nil;
 }
+
+static NSDictionary *parse_entitlements(const void *entitlements, size_t length) {
+    char *copy = malloc(length);
+    memcpy(copy, entitlements, length);
+
+    // strip out psychic paper entitlement hiding
+    if (@available(iOS 13.5, *)) {
+    } else {
+        static const char *needle = "<!---><!-->";
+        char *found = strnstr(copy, needle, length);
+        if (found) {
+            memset(found, ' ', strlen(needle));
+        }
+    }
+    NSData *data = [NSData dataWithBytes:copy length:length];
+    free(copy);
+
+    return [NSPropertyListSerialization propertyListWithData:data
+                                                     options:NSPropertyListImmutable
+                                                      format:nil
+                                                       error:nil];
+}
+#endif
 
 static NSDictionary *cached_app_entitlements(void) {
     static NSDictionary *entitlements = nil;

@@ -14,6 +14,9 @@ DEVELOPER_ACCOUNT_PAID = NO
 // Set to YES if you have access to VM entitlements in your account
 DEVELOPER_ACCOUNT_VM_ACCESS = NO
 
+// Set to YES if building for a Security Research Device
+SECURITY_RESEARCH_DEVICE = NO
+
 // Name of the iOS development signing certificate, you probably do not need
 // to change this.
 CODE_SIGN_IDENTITY_IOS = Apple Development

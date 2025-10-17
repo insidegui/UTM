@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>application-identifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>dynamic-codesigning</key>
+	<true/>
+	<key>com.apple.security.cs.jit-write-allowlist</key>
+	<true/>
+	<key>get-task-allow</key>
+	<true/>
+	<key>platform-application</key>
+	<true/>
+	<key>research.com.apple.license-to-operate</key>
+	<true/>
+	<key>com.apple.QuartzCore.displayable-context</key>
+	<true/>
+	<key>com.apple.QuartzCore.secure-mode</key>
+	<true/>
+	<key>com.apple.private.mobileinstall.xpc-services-enabled</key>
+	<true/>
+	<key>com.apple.developer.kernel.increased-memory-limit</key>
+	<true/>
+	<key>com.apple.developer.kernel.extended-virtual-addressing</key>
+	<true/>
+	<key>com.apple.private.hypervisor</key>
+	<true/>
+	<key>com.apple.private.security.no-sandbox</key>
+	<true/>
+	<key>com.apple.private.IOSurface.protected-access</key>
+	<true/>
+	<key>com.apple.private.iosurfaceinfo</key>
+	<true/>
+	<key>com.apple.security.device.usb</key>
+	<true/>
+	<key>com.apple.private.IOSurface.wiredSendRights</key>
+	<true/>
+	<key>com.apple.security.exception.iokit-user-client-class</key>
+	<array>
+		<string>AppleUSBHostInterfaceUserClient</string>
+		<string>IOUSBDeviceInterfaceUserClient</string>
+		<string>AppleUSBHostFrameworkDeviceClient</string>
+		<string>AppleUSBHostFrameworkInterfaceClient</string>
+		<string>AppleUSBSerialUserClient</string>
+		<string>IOUSBMassStorageResourceUserClient</string>
+		<string>AppleHPMUserClient</string>
+		<string>IOSurfaceRootUserClient</string>
+		<string>IOSurfaceAcceleratorClient</string>
+		<string>IOSurfaceAcceleratorParavirtClient</string>
+		<string>IOHIDLibUserClient</string>
+	</array>
+</dict>
+</plist>

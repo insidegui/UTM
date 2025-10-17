@@ -1236,7 +1236,7 @@ extension UTMDataError: LocalizedError {
 // MARK: - Remote Client
 
 /// Declare host capabilities to any remote client
-struct UTMCapabilities: OptionSet, Codable {
+struct UTMCapabilities: OptionSet, Codable, CustomStringConvertible {
     let rawValue: UInt
 
     /// If set, no trick is needed to get JIT working as the process is entitled.
@@ -1250,6 +1250,11 @@ struct UTMCapabilities: OptionSet, Codable {
     
     /// If set, host is x86_64
     static let isX86_64 = Self(rawValue: 1 << 3)
+
+    /// If set, host is a Security Research Device.
+    static let isSRD = Self(rawValue: 1 << 4)
+
+    private static var loggedCurrentCapabilitiesOnce = false
 
     static fileprivate(set) var current: Self = {
         var current = Self()
@@ -1267,8 +1272,37 @@ struct UTMCapabilities: OptionSet, Codable {
         #if arch(x86_64)
         current.insert(.isX86_64)
         #endif
+        if srd_allows_security_research() {
+            current.insert(.isSRD)
+        }
+        if !loggedCurrentCapabilitiesOnce {
+            logger.info("🚀 Resolved capabilities: \(current)")
+            loggedCurrentCapabilitiesOnce = true
+        }
         return current
     }()
+
+    var description: String {
+        var components = [String]()
+
+        if contains(.hasJitEntitlements) {
+            components.append("hasJitEntitlements")
+        }
+        if contains(.hasHypervisorSupport) {
+            components.append("hasHypervisorSupport")
+        }
+        if contains(.isAarch64) {
+            components.append("isAarch64")
+        }
+        if contains(.isX86_64) {
+            components.append("isX86_64")
+        }
+        if contains(.isSRD) {
+            components.append("isSRD")
+        }
+
+        return components.joined(separator: ", ")
+    }
 }
 
 #if WITH_REMOTE

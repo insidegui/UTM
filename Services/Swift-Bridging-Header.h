@@ -28,6 +28,7 @@
 #include "UTMLogging.h"
 #include "UTMASIFImage.h"
 #include "VMKeyboardMap.h"
+#include "UTMSRD.h"
 #if !defined(WITH_REMOTE)
 #include "UTMProcess.h"
 #include "UTMQemuSystem.h"

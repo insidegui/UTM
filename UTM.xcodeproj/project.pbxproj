@@ -1271,6 +1271,10 @@
 		CEFE96772B69A7CC000F00C9 /* VMRemoteSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE96762B69A7CC000F00C9 /* VMRemoteSessionState.swift */; };
 		CEFE98DF29485237007CB7A8 /* UTM.sdef in Resources */ = {isa = PBXBuildFile; fileRef = CEFE98DE29485237007CB7A8 /* UTM.sdef */; };
 		CEFE98E129485776007CB7A8 /* UTMScriptingVirtualMachineImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE98E029485776007CB7A8 /* UTMScriptingVirtualMachineImpl.swift */; };
+		F4B12D682EA2A4F900A51A35 /* UTMSRD.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B12D672EA2A4F900A51A35 /* UTMSRD.m */; };
+		F4B12D692EA2A4F900A51A35 /* UTMSRD.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B12D672EA2A4F900A51A35 /* UTMSRD.m */; };
+		F4B12D6A2EA2A4F900A51A35 /* UTMSRD.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B12D672EA2A4F900A51A35 /* UTMSRD.m */; };
+		F4B12D6B2EA2A4F900A51A35 /* UTMSRD.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B12D672EA2A4F900A51A35 /* UTMSRD.m */; };
 		FF0307552A84E3B70049979B /* QEMULauncher-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF0307532A84E3B70049979B /* QEMULauncher-InfoPlist.strings */; };
 		FFB02A8C266CB09C006CD71A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFB02A8A266CB09C006CD71A /* InfoPlist.strings */; };
 		FFB02A8D266CB09C006CD71A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFB02A8A266CB09C006CD71A /* InfoPlist.strings */; };
@@ -2157,6 +2161,10 @@
 		E68D492228AC018E00D34C54 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E68D492328AC018E00D34C54 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E6F791192903EEC6000BAAC9 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F4B12D5E2EA27C2300A51A35 /* UTMSRD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UTMSRD.h; sourceTree = "<group>"; };
+		F4B12D5F2EA2A01300A51A35 /* iOS-SRD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS-SRD.entitlements"; sourceTree = "<group>"; };
+		F4B12D652EA2A33400A51A35 /* UTMSRD_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UTMSRD_Private.h; sourceTree = "<group>"; };
+		F4B12D672EA2A4F900A51A35 /* UTMSRD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UTMSRD.m; sourceTree = "<group>"; };
 		F6DA2DA52AAFED5F0070DCD1 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/VMDisplayMetalViewInputAccessory.strings"; sourceTree = "<group>"; };
 		F6DA2DA62AAFED5F0070DCD1 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/VMDisplayWindow.strings"; sourceTree = "<group>"; };
 		F6DA2DA72AAFED5F0070DCD1 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2802,6 +2810,7 @@
 				84018682288A3B2E0050AC51 /* VMWindowView.swift */,
 				CEF0307026A2B04300667B63 /* VMWizardView.swift */,
 				CE95877426D74C2A0086BDE8 /* iOS.entitlements */,
+				F4B12D5F2EA2A01300A51A35 /* iOS-SRD.entitlements */,
 				CE2D954F24AD4F980059923A /* Info.plist */,
 				CECF02572B70909900409FC0 /* Info-Remote.plist */,
 				FFB02A8A266CB09C006CD71A /* InfoPlist.strings */,
@@ -2901,6 +2910,9 @@
 				CE2D954624AD4F980059923A /* UTMExtensions.swift */,
 				CEB63A7924F469E300CAF323 /* UTMJailbreak.m */,
 				CEB63A7824F468BA00CAF323 /* UTMJailbreak.h */,
+				F4B12D5E2EA27C2300A51A35 /* UTMSRD.h */,
+				F4B12D652EA2A33400A51A35 /* UTMSRD_Private.h */,
+				F4B12D672EA2A4F900A51A35 /* UTMSRD.m */,
 				846F8D592E3891FE0037162B /* UTMKeyboardShortcuts.swift */,
 				CE059DC6243E9E3400338317 /* UTMLocationManager.h */,
 				CE059DC7243E9E3400338317 /* UTMLocationManager.m */,
@@ -3715,6 +3727,7 @@
 				CEE7E936287CFDB100282049 /* UTMLegacyQemuConfiguration+Constants.m in Sources */,
 				CE88A0A32E2321D200EAA28E /* UTMVirtualMachineEntity.swift in Sources */,
 				4B224B9D279D4D8100B63CFF /* InListButtonStyle.swift in Sources */,
+				F4B12D6B2EA2A4F900A51A35 /* UTMSRD.m in Sources */,
 				2C33B3A92566C9B100A954A6 /* VMContextMenuModifier.swift in Sources */,
 				CE5076DB250AB55D00C26C19 /* VMDisplayMetalViewController+Pencil.m in Sources */,
 				8401865E2887B1620050AC51 /* VMDisplayTerminalViewController.swift in Sources */,
@@ -3921,6 +3934,7 @@
 				CE03D0D424DCF6DD00F76B84 /* VMMetalViewInputDelegate.swift in Sources */,
 				848F71EA277A2A4E006A0240 /* UTMSerialPort.swift in Sources */,
 				CE25124D29C55816000790AB /* UTMScriptingConfigImpl.swift in Sources */,
+				F4B12D692EA2A4F900A51A35 /* UTMSRD.m in Sources */,
 				846F8D582E3850620037162B /* VMKeyboardShortcutsView.swift in Sources */,
 				CE0B6D0224AD56AE00FE012D /* UTMProcess.m in Sources */,
 				CEF0306026A2AFDF00667B63 /* VMWizardState.swift in Sources */,
@@ -4119,6 +4133,7 @@
 				84018687288A3B5B0050AC51 /* VMSessionState.swift in Sources */,
 				CEA45EA3263519B5002FA97D /* VMConfigSharingView.swift in Sources */,
 				CEA45EA5263519B5002FA97D /* VMConfigInputView.swift in Sources */,
+				F4B12D6A2EA2A4F900A51A35 /* UTMSRD.m in Sources */,
 				841E58CF28937FED00137A20 /* UTMSingleWindowView.swift in Sources */,
 				CEA45EA8263519B5002FA97D /* VMDisplayMetalViewController+Gamepad.m in Sources */,
 				848D99C12866D9CE0055C215 /* QEMUArgumentBuilder.swift in Sources */,
@@ -4335,6 +4350,7 @@
 				CEF7F60A2AEEDCC400E34952 /* VMConfigSerialView.swift in Sources */,
 				CE38EC692B5DB3AE008B324B /* UTMRemoteClient.swift in Sources */,
 				CEF7F60B2AEEDCC400E34952 /* VMWizardState.swift in Sources */,
+				F4B12D682EA2A4F900A51A35 /* UTMSRD.m in Sources */,
 				CEF7F60C2AEEDCC400E34952 /* UTMQemuConfigurationInput.swift in Sources */,
 				CEF7F60D2AEEDCC400E34952 /* VMDisplayMetalViewController+Keyboard.m in Sources */,
 				CEF7F60E2AEEDCC400E34952 /* UTMExtensions.swift in Sources */,
